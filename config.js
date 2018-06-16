@@ -1,9 +1,10 @@
-const EXPRESS_SERVER_PORT = 3000;
-const accountSid = 'Twilio-Account-SID';
-const authToken = 'Twilio-Auth-Token';
-
 module.exports = {
-  SERVER_PORT: EXPRESS_SERVER_PORT,
-  ACCOUNT_SID: accountSid,
-  AUTH_TOKEN: authToken
+  SERVER_PORT: 'Your-HTTP-Server-Port',
+  ACCOUNT_SID: 'Your-Twilio-Account-SID',
+  AUTH_TOKEN: 'Your-Twilio-Auth-Token',
+  POSTGRES_DB_HOST: 'Your-Postgres-DB-Host',
+  POSTGRES_DB_PORT: 'Your-Postgres-DB-Port',
+  POSTGRES_DB_USER: 'Your-Postgres-DB-User',
+  POSTGRES_DB_PASS: 'Your-Postgres-DB-Pass',
+  POSTGRES_DB_NAME: 'Your-Postgres-DB-Name'
 };
