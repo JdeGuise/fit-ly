@@ -33,10 +33,6 @@ footer {
 	padding-top: 10px;
 }
 
-#fitness-header {
-	text-align: center;
-}
-
 header, #jumbotron, footer {
 	background: rgba(195, 197, 195, .85);
 	position: fixed;
@@ -73,7 +69,7 @@ header, #jumbotron, footer {
 	margin-bottom: 4vh;
 }
 
-#pick-a-day-calendar{
+#pick-a-day-calendar {
 	border: 2px solid grey;
 	background: darkgrey;
 	margin-left: 15vw;
@@ -85,6 +81,6 @@ header, #jumbotron, footer {
 
 #container-daily-details, #container-additional-media, 
 #container-calories-burned, #container-running-total,
-#container-pick-a-day, #page-header, footer{
+#container-pick-a-day, #page-header, footer, #fitness-header {
 	text-align: center;
 }
