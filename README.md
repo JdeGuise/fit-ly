@@ -21,4 +21,4 @@ Currently, two text message formats are supported, auto logging the date and man
 Response must be formatted as: 1-4; 396; 3.2mi; 31:30
 
 ## MANUALLY SPECIFY DATE
-Response must be formatted as: 1-4; 396; 3.2mi; 31:30; 06-23-2018
+Response must be formatted as: 1-4; 396; 3.2mi; 31:30; 06-23-2018 (or 06-23-2018 5:30:00)
