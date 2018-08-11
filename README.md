@@ -53,12 +53,12 @@ database - fitness_tracker
 table - dailyFitnessStatistics
 columns:
 
-`runningEntryId` `id`
-`dayInRunningCycle` `int`
-`caloriesBurned` `int`
-`totalDistanceRan` `text`
-`runningTimeElapsed` `text`
-`createdDate` `datetime`
+- `runningEntryId` `id`
+- `dayInRunningCycle` `int`
+- `caloriesBurned` `int`
+- `totalDistanceRan` `text`
+- `runningTimeElapsed` `text`
+- `createdDate` `datetime`
 
 
 # Usage
