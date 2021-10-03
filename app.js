@@ -11,11 +11,8 @@ const run = require("./graphql/run/run.js");
 const app = express();
 
 app.use("/graphql", ExpressGraphQL({ schema: run.schema, graphiql: true}));
-
 app.listen(4000, () => {
     console.log("GraphQL server running at http://localhost:4000.");
-
-    // run.createRun('10/31/21', '100k', '10:00:00', '9999');
 });
 
 function buildTextMessage(caloriesBurned, distanceRan, runningTime, createdDate=null) {
@@ -92,6 +89,8 @@ function getNewToken(oAuth2Client, TOKEN_PATH, callback) {
   });
 }
 
+// run.createRun('10/31/21', '100k', '10:00:00', '9999');
+// run.deleteRun('1');
 function setupGoogleServices(auth) {
   const PROJECT_ID = 'fitly-327819';
   const TOPIC_ID = PROJECT_ID + '-topic';
@@ -119,8 +118,9 @@ function setupGoogleServices(auth) {
 
         // we want to verify the list split
         // we're expecting something like "[ '10/02/21', '4.52km', '35:00', '346' ]"
-        if(dataPoints.length > 1) {
-          console.log(dataPoints);
+        if(dataPoints.length === 4) {
+          console.log('Creating database entry...');
+          run.createRun(dataPoints[0], dataPoints[1], dataPoints[2], dataPoints[3]);
         }
       });
     });
@@ -139,7 +139,7 @@ function initGmailWatcher(googleGmailUsers, options) {
     if(err) {
       console.log(err);
     } else {
-      console.log(res.data.expiration - Date.now());
+      console.log("Gmail Watcher Initialized.");
     }
   });
 }
