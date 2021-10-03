@@ -1,66 +1,22 @@
 const config = require('./config');
-// const pool = require('./database');
 
 const fs = require('fs');
 const readline = require('readline');
 const {google} = require('googleapis');
 const {PubSub} = require('@google-cloud/pubsub');
 
-// const http = require('http');
-// const bodyParser = require('body-parser');
-// const express = require('express');
+const express = require('express');
+const ExpressGraphQL = require("express-graphql").graphqlHTTP;
+const run = require("./graphql/run/run.js");
+const app = express();
 
-// const app = express();
-// app.use(bodyParser.urlencoded({ extended: false }));
+app.use("/graphql", ExpressGraphQL({ schema: run.schema, graphiql: true}));
 
-// app.post("/sms", function(req, res) {
-//     res.writeHead(200, {'Content-Type': 'text/xml'});
-//     var twiml = new MessagingResponse();
-//     var insertQuery;
-//     const responseDetails = req.body.Body.split('; ');
-//     const runningCycleOnDays = 3;
+app.listen(4000, () => {
+    console.log("GraphQL server running at http://localhost:4000.");
 
-//     var newText = buildTextMessage(
-//         responseDetails[0],
-//         responseDetails[1],
-//         responseDetails[2], 
-//         responseDetails[3], 
-//         runningCycleOnDays
-//     );
-
-//     if(responseDetails.length >= 5) {
-//         newText = buildTextMessage(
-//             responseDetails[0],
-//             responseDetails[1],
-//             responseDetails[2], 
-//             responseDetails[3],
-//             runningCycleOnDays,
-//             responseDetails[4]
-//         );
-//     }
-
-//     pool.connect(function(err, client, done) {
-//         if (err) throw new Error(err);
-//         if (responseDetails.length === 4) {
-//             insertQuery = "INSERT into dailyfitnessstatistics(dayincycle, caloriesburned, distanceran, runningtime) VALUES($1, $2, $3, $4) RETURNING id";            
-//             client.query(
-//                 [responseDetails[0], responseDetails[1], responseDetails[2], responseDetails[3]], function(err, result) {
-//                     if (err) throw new Error(err);
-//                 }
-//             );
-//         } else if (responseDetails.length === 5) {
-//             insertQuery = "INSERT into dailyfitnessstatistics(dayincycle, caloriesburned, distanceran, runningtime, createddate) VALUES($1, $2, $3, $4, $5) RETURNING id";            
-//             client.query(
-//                 insertQuery, [responseDetails[0], responseDetails[1], responseDetails[2], responseDetails[3], responseDetails[4]], function(err, result) {
-//                     if (err) throw new Error(err);
-//                 }
-//             );
-//         }
-//     });
-
-//     sendText(newText, twiml);
-//     res.end(twiml.toString());    
-// });
+    // run.createRun('10/31/21', '100k', '10:00:00', '9999');
+});
 
 function buildTextMessage(caloriesBurned, distanceRan, runningTime, createdDate=null) {
     message += 'Calories burned today: ' + caloriesBurned + '.\n';
