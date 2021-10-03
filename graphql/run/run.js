@@ -185,8 +185,13 @@ function createRun(dateOfRun, distance, duration, calories) {
     database.run('INSERT INTO Runs (dateOfRun, distance, duration, calories) VALUES (?,?,?,?);', [dateOfRun, distance, duration, calories]);
 }
 
+function deleteRun(id) {
+    database.run('DELETE from Runs WHERE id =(?);', [id]);
+}
+
 //export schema to use on index.js
 module.exports = {
     schema,
-    createRun
+    createRun,
+    deleteRun
 }
