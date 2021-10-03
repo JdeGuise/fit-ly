@@ -1,3 +1,7 @@
 node_modules
 config.js
+credentials.json
+fitly-service.json
+fitly.db
+token.json
 package-lock.json
